@@ -8,9 +8,17 @@ app.use(morgan('combine'))
 app.use(bodyParser.json())
 app.use(cors())
 
+//'status' endpoint
 app.get('/status', (req, res) => { //Get request to a 'status' endpoint, here get is the method being called
   res.send({
     message: 'hello world!'
+  })
+})
+
+//'register' endpoint
+app.post('/register', (req, res) => {
+  res.send({
+    message: `Hello ${req.body.email}! Your user was registered! Have fun!`
   })
 })
 
