@@ -1,4 +1,4 @@
-//Used for setting up a type of connector to communicate with the backend
+// Used for setting up a type of connector to communicate with the backend
 
 import axios from 'axios'
 
