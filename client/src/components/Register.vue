@@ -1,6 +1,19 @@
 <template>
   <div>
     <h1>Register</h1>
+    <input
+      type="email"
+      name="email"
+      v-model="email"
+      placeholder="email"/>
+    <br>
+    <input
+      type="password"
+      name="password"
+      v-model="password"
+      placeholder="password"/>
+    <br>
+    <button>Register</button>
   </div>
 </template>
 
@@ -8,6 +21,14 @@
 export default {
   data () {
     return {
+      //The email and password is bounded by the v-model tags above in the input
+      email: 'placeholderText',
+      password:'placeholderText'
+    }
+  },
+  watch: {
+    email(value) {
+      console.log('email has changed', value) //Test code, try changing the entry in the email box and open dev tool
     }
   }
 }
