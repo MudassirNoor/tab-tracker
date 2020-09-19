@@ -1,7 +1,9 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <!--Needs v-app wrapping to ensure Veutify works properly -->
+    <v-app>
+      <router-view/>
+    </v-app>
   </div>
 </template>
 
