@@ -20,8 +20,8 @@ fs
   )
   .forEach((file) => {
     // for each file we will declare a model and name the model
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
-    db.file = model
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize)
+    db[model.name]  = model
   })
 
 db.sequelize = sequelize
