@@ -1,5 +1,8 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
+const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 
 module.exports = (app) => {
-  app.post('/register', AuthenticationController.register)
+  // When the register endpoint is hit, first the ControllerPolicy will validate email
+  // Once validated the next function - AuthenticationController.register will be called
+  app.post('/register', AuthenticationControllerPolicy.register,AuthenticationController.register)
 }
