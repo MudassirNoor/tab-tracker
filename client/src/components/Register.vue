@@ -1,20 +1,17 @@
 <template>
-  <v-layout column>
-    <v-flex xs3 offset-xs3 align-self-center>
-      <v-toolbar dense color="orange" elevation="2" dark>
-        <v-toolbar-title>Register</v-toolbar-title>
-      </v-toolbar>
-      <div class="pl-4 pr-4 pt-2 pb-2">
-        <v-text-field type="email" name="email" v-model="email" placeholder="email"/>
-        <br>
-        <v-text-field type="password" name="password" v-model="password" placeholder="password"/>
-        <br>
-        <div class="error" v-html="error"/>
-        <br>
-        <v-btn @click="register">Register</v-btn>
-      </div>
+    <v-flex xs6 offset-xs3 justify-center>
+        <v-toolbar flat dense color="cyan" elevation="2" dark>
+          <v-toolbar-title>Register</v-toolbar-title>
+        </v-toolbar>
+      <v-card-text>
+        <v-form>
+          <v-text-field type="email" name="email" v-model="email" placeholder="email"/>
+          <v-text-field type="password" name="password" v-model="password" placeholder="password"/>
+          <div class="error" v-html="error"/>
+          <v-btn @click="register">Register</v-btn>
+        </v-form>
+      </v-card-text>
     </v-flex>
-  </v-layout>
 </template>
 
 <script>
@@ -48,6 +45,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .error {
-  color: red;
+  color: white;
 }
 </style>
