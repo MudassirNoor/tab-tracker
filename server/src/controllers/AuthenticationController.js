@@ -10,5 +10,30 @@ module.exports = {
         error: 'The email account is already in use.'
       })
     }
+  },
+  async login (req, res) {
+    try {
+      const {email, password} = req.body
+      const user = await User.findOne({
+        where: {
+          email: email
+        }
+      })
+      const isPassword = password === user.password
+      if (!user || !isPassword) {
+        return res.status(403).send({
+          error: 'The login information was incorrect'
+        })
+      }
+
+      const userJson = user.toJSON()
+      res.send({
+        user: user.toJSON()
+      })
+    } catch (err) {
+      res.status(500).send({ // A 500 status informs users its not their fault
+        error: 'An error has occurred while try to login'
+      })
+    }
   }
 }

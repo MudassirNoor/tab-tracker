@@ -3,8 +3,8 @@ const Joi = require('joi')
 module.exports = {
   // @param req is request received
   // @param res the response to send
-  // @param next is used to call the next function in line defined in routes.js for the register endpoint
-  register (req, res, next) {
+  // @param next is used to call the next function in line defined in routes.js for this endpoint
+  validateEmailAndPassword (req, res, next) {
     // The schema is a Joi object which has an API to for validating
     const schema = Joi.object({
       email: Joi.string().email(), // email must be string
@@ -33,11 +33,11 @@ module.exports = {
           break
         default:
           res.status(400).send({
-            error: 'Invalid registration information'
+            error: 'Invalid email and password information'
           })
       }
     } else {
-      next() // No errors found, so call the AuthenticationController.register
+      next() // No errors found
     }
   }
 }
