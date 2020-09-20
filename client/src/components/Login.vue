@@ -1,14 +1,14 @@
 <template>
   <v-flex xs6 offset-xs3 justify-center>
     <v-toolbar flat dense color="cyan" elevation="2" dark>
-      <v-toolbar-title>Register</v-toolbar-title>
+      <v-toolbar-title>Login</v-toolbar-title>
     </v-toolbar>
     <v-card-text>
       <v-form>
         <v-text-field type="email" name="email" v-model="email" placeholder="email"/>
         <v-text-field type="password" name="password" v-model="password" placeholder="password"/>
         <div class="error" v-html="error"/>
-        <v-btn color="cyan" @click="register">Register</v-btn>
+        <v-btn color="cyan" @click="login">Login</v-btn>
       </v-form>
     </v-card-text>
   </v-flex>
@@ -26,11 +26,11 @@ export default {
     }
   },
   methods: {
-    // The register function is called on clicking the register button
+    // The login function is called on clicking the login button
     // The @click parameter points to this function call
-    async register () {
+    async login () {
       try {
-        await AuthenticationService.register({
+        await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
