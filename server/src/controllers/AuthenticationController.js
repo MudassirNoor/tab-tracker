@@ -2,7 +2,7 @@ const { User } = require('../models')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
-//
+// For Tokens
 function jwtSignUser (user) {
   const ONE_WEEK = 60 * 60 *24 * 7
   return jwt.sign(user, config.authentication.jwtSecret, {
@@ -29,7 +29,8 @@ module.exports = {
           email: email
         }
       })
-      const isPassword = password === user.password
+
+      const isPassword = user.comparePassword(password)
       if (!user || !isPassword) {
         return res.status(403).send({
           error: 'The login information was incorrect'
