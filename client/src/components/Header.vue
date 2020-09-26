@@ -9,8 +9,8 @@
 <!--    </v-toolbar-items>-->
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-btn dense dark flat color="cyan" @click = "navigate({name: 'register'})">Sign Up</v-btn>
-      <v-btn dense dark flat color="cyan" @click = "navigate({name: 'login'})">Login</v-btn>
+      <v-btn dense dark color="cyan" @click = "navigate({name: 'register'})">Sign Up</v-btn>
+      <v-btn dense dark color="cyan" @click = "navigate({name: 'login'})">Login</v-btn>
     </v-toolbar-items>
   </v-toolbar>
 </template>

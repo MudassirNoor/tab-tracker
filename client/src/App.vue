@@ -3,7 +3,7 @@
     <!--Needs v-app wrapping to ensure Veutify works properly -->
     <v-app>
       <v-main>
-        <page-header/>
+        <page-header/> <!-- Imports the header component PageHeader and applies it through out the whole app-->
         <v-container fluid>
           <router-view/>
         </v-container>
