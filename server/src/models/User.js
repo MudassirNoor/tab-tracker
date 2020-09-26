@@ -9,7 +9,7 @@ function hashPassword (user) {
   }
 
   return bcrypt.genSalt(SALT_FACTOR)
-    .then( (salt) => bcrypt.hash(user.password, salt, null))
+    .then((salt) => bcrypt.hash(user.password, salt, null))
     .then((hash) => user.setDataValue("password", hash)
   )
 }
@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
   }, {
     hooks: {
-      beforeCreate: hashPassword,
       beforeUpdate: hashPassword,
       beforeSave: hashPassword
     }
