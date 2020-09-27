@@ -4,5 +4,8 @@ import Api from './Api'
 export default {
   getAllSongs () {
     return Api().get('song')
+  },
+  createSong (song) {
+    return Api().post('song', song)
   }
 }
