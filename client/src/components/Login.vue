@@ -1,20 +1,18 @@
 <template>
   <v-flex xs6 offset-xs3 justify-center>
     <v-card>
-      <v-toolbar flat dense color="cyan" elevation="2" dark>
-        <v-toolbar-title>Login</v-toolbar-title>
-        <v-spacer></v-spacer>
-      </v-toolbar>
-      <v-card-text>
-        <v-form>
-          <v-text-field placeholder="email" v-model="email" type="email" name="email"></v-text-field>
-          <v-text-field placeholder="password" v-model="password" type="password" name="password"></v-text-field>
-        </v-form>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="cyan" @click="login">Login</v-btn>
-      </v-card-actions>
+      <Panel title="Login">
+        <v-card-text>
+          <v-form>
+            <v-text-field placeholder="email" v-model="email" type="email" name="email"></v-text-field>
+            <v-text-field placeholder="password" v-model="password" type="password" name="password"></v-text-field>
+          </v-form>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="cyan" @click="login">Login</v-btn>
+        </v-card-actions>
+      </Panel>
     </v-card>
   </v-flex>
 </template>
@@ -22,7 +20,11 @@
 <script>
 // The authentication service is making a post request to the server
 import AuthenticationService from '../services/AuthenticationService'
+import Panel from './Panel'
 export default {
+  components: {
+    Panel
+  },
   data () {
     return {
       // The email and password is bounded by the v-model tags above in the input

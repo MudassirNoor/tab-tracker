@@ -1,13 +1,13 @@
 <template>
   <v-flex xs6 offset-xs3 justify-center>
-    <Panel title="Songs">
+    <panel title="Songs">
       <!--A vue for loop getting data-->
       <div v-for="song in songs" :key="song.title">
         {{song.title}} -
         {{song.artist}} -
         {{song.album}}
       </div>
-    </Panel>
+    </panel>
   </v-flex>
 </template>
 
