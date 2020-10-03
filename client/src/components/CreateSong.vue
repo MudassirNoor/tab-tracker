@@ -5,15 +5,16 @@
         <panel title="CreateSong">
           <v-card-text>
             <v-form>
-              <v-text-field placeholder="Title" v-model="song.title" ></v-text-field>
-              <v-text-field placeholder="Artist" v-model="song.artist"></v-text-field>
-              <v-text-field placeholder="Genre" v-model="song.genre" ></v-text-field>
-              <v-text-field placeholder="Album" v-model="song.album"></v-text-field>
-              <v-text-field placeholder="Album Image URL" v-model="song.albumImageURL"></v-text-field>
-              <v-text-field placeholder="YouTube ID" v-model="song.youtubeId"></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="Title" v-model="song.title" ></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="Artist" v-model="song.artist"></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="Genre" v-model="song.genre" ></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="Album" v-model="song.album"></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="Album Image URL" v-model="song.albumImageURL"></v-text-field>
+              <v-text-field required :rules="[required]" placeholder="YouTube ID" v-model="song.youtubeId"></v-text-field>
             </v-form>
           </v-card-text>
         </panel>
+        <span class ="error" v-if="error" v-html="error"></span>
       </v-card>
     </v-flex>
     <v-flex class="ml-2">
@@ -36,19 +37,6 @@
 import Panel from './Panel'
 import SongService from '../services/SongService'
 export default {
-  components: {
-    Panel
-  },
-  methods: {
-    async createSong () {
-      try {
-        await SongService.createSong(this.song)
-        await this.$router.push({name: 'song'})
-      } catch (err) {
-        console.log(err)
-      }
-    }
-  },
   data () {
     return {
       song: {
@@ -60,6 +48,27 @@ export default {
         youtubeId: null,
         lyrics: null,
         tab: null
+      },
+      error: null,
+      required: (value) => !!value || 'Required.'
+    }
+  },
+  components: {
+    Panel
+  },
+  methods: {
+    async createSong () {
+      this.error = null
+      const areAllFieldsFilledIn = Object.keys(this.song).every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all the required fields.'
+        return
+      }
+      try {
+        await SongService.createSong(this.song)
+        await this.$router.push({name: 'song'})
+      } catch (err) {
+        console.log(err)
       }
     }
   }
