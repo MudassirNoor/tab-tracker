@@ -4,6 +4,7 @@
   <v-flex>
     <v-toolbar flat dense color="cyan" elevation="2" dark>
       <v-toolbar-title>{{title}}</v-toolbar-title>
+      <slot name="action"></slot> <!--We can add anything to this slot by referencing the name of this slot-->
     </v-toolbar>
     <div>
       <slot>No slot content defined</slot>
