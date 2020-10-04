@@ -22,8 +22,8 @@
         <panel title="Song Structure">
           <v-card-text>
             <v-form>
-                <v-text-field placeholder="Tab" multi-line v-model="song.tab"></v-text-field>
-                <v-text-field placeholder="Lyrics" multi-line v-model="song.lyrics"></v-text-field>
+                <v-textarea placeholder="Tab" v-model="song.tab"></v-textarea>
+                <v-textarea placeholder="Lyrics" v-model="song.lyrics"></v-textarea>
             </v-form>
           </v-card-text>
         </panel>
@@ -32,7 +32,6 @@
     </v-flex>
   </v-layout>
 </template>
-
 <script>
 import Panel from './Panel'
 import SongService from '../services/SongService'
