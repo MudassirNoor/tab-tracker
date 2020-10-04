@@ -1,6 +1,6 @@
 const { Song } = require('../models')
 
-// Backend reqe
+// Backend request
 module.exports = {
   async createSong (req, res) {
     try {
@@ -21,6 +21,20 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: 'An error has occurred while trying to fetch songs'
+      })
+    }
+  },
+  async showSong(req, res) {
+    try {
+      const song = await Song.findOne({
+        where : {
+          id: req.params.songId
+        }
+      })
+      res.send(song)
+    } catch (err) {
+      res.status(500).send({
+        error: `An error has occurred while trying to fetch the song with id ${req.params.songId}`
       })
     }
   }

@@ -9,4 +9,5 @@ module.exports = (app) => {
   app.post('/login', AuthenticationControllerPolicy.validateEmailAndPassword, AuthenticationController.login)
   app.get('/song', SongController.getSongs)
   app.post('/song', SongController.createSong)
+  app.get('/song/:songId', SongController.showSong)
 }
