@@ -5,7 +5,7 @@ import Register from '@/components/Register' // Import the Register component
 import Login from '@/components/Login' // Import the Login component
 import Song from '@/components/Song' // Import the Song component
 import CreateSong from '@/components/CreateSong' // Import the CreateSong component
-import ViewSong from '@/components/ViewSong'
+import ViewSong from '@/components/ViewSong/Index'
 
 Vue.use(Router)
 
