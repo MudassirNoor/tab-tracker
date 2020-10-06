@@ -48,12 +48,5 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  width: 80%;
-  font-family: monospace;
-  height: 330px;
-  border: none transparent;
-  overflow: auto;
-  padding: 40px;
-}
+
 </style>

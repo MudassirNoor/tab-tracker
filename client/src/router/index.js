@@ -6,6 +6,7 @@ import Login from '@/components/Login' // Import the Login component
 import Song from '@/components/Song' // Import the Song component
 import CreateSong from '@/components/CreateSong' // Import the CreateSong component
 import ViewSong from '@/components/ViewSong/Index'
+import EditSong from '@/components/EditSong'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/song/:songId',
       name: 'view-song',
       component: ViewSong
+    },
+    {// create a register route http://localhost:8080/#/song/:songId/editSong
+      path: '/song/:songId/editSong',
+      name: 'edit-song',
+      component: EditSong
     }
   ]
 })

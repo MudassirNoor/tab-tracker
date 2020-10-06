@@ -2,7 +2,7 @@
   <v-layout>
     <v-flex xs4>
       <v-card>
-        <panel title="Create Song">
+        <panel title="Edit Song">
           <v-card-text>
             <v-form>
               <v-text-field required :rules="[required]" placeholder="Title" v-model="song.title" ></v-text-field>
@@ -28,12 +28,12 @@
           </v-card-text>
         </panel>
       </v-card>
-      <v-btn color="cyan" @click="createSong">Create Song</v-btn>
+      <v-btn color="cyan" @click="save">Save</v-btn>
     </v-flex>
   </v-layout>
 </template>
 <script>
-import Panel from './Panel'
+import Panel from '@/components/Panel'
 import SongService from '../services/SongService'
 export default {
   data () {
@@ -56,7 +56,8 @@ export default {
     Panel
   },
   methods: {
-    async createSong () {
+    async save () {
+      const songId = this.$store.state.route.params.songId
       this.error = null
       const areAllFieldsFilledIn = Object.keys(this.song).every(key => !!this.song[key])
       if (!areAllFieldsFilledIn) {
@@ -64,12 +65,16 @@ export default {
         return
       }
       try {
-        await SongService.createSong(this.song)
-        await this.$router.push({name: 'song'})
+        await SongService.save(this.song)
+        await this.$router.push({name: 'view-song', params: { songId: songId }})
       } catch (err) {
         console.log(err)
       }
     }
+  },
+  async mounted () {
+    const songId = this.$store.state.route.params.songId
+    this.song = (await SongService.show(songId)).data
   }
 }
 </script>

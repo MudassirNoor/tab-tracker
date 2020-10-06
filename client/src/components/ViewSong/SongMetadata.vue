@@ -14,6 +14,11 @@
             <div class="song-album">
               {{song.album}}
             </div>
+            <v-btn
+              color="cyan"
+              @click="navigate({name: 'edit-song', params: {songId: song.id}})">
+              Edit Song
+            </v-btn>
           </v-flex>
           <v-flex xs6>
             <img class="song-album-image" :src="song.albumImageURL">
@@ -32,6 +37,11 @@ export default {
   ],
   components: {
     Panel
+  },
+  methods: {
+    navigate (route) {
+      this.$router.push(route)
+    }
   }
 }
 </script>

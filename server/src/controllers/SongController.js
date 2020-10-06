@@ -27,7 +27,7 @@ module.exports = {
   async showSong(req, res) {
     try {
       const song = await Song.findOne({
-        where : {
+        where: {
           id: req.params.songId
         }
       })
@@ -35,6 +35,20 @@ module.exports = {
     } catch (err) {
       res.status(500).send({
         error: `An error has occurred while trying to fetch the song with id ${req.params.songId}`
+      })
+    }
+  },
+  async saveSong(req, res) {
+    try {
+      const song = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      })
+      res.send(req.body)
+    } catch (err) {
+      res.status(500).send({
+        error: `An error has occurred while trying to update the song with id ${req.params.songId}`
       })
     }
   }

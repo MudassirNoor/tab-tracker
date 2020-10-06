@@ -27,12 +27,12 @@
             <div class="song-album">
               {{song.album}}
             </div>
+            <v-btn
+              color="cyan"
+              @click="navigate({name: 'view-song', params: {songId: song.id}})">
+              View Song
+            </v-btn>
           </v-flex>
-          <v-btn
-            color="cyan"
-            @click="navigate({name: 'view-song', params: {songId: song.id}})">
-            View Song
-          </v-btn>
           <v-flex xs6>
             <img class="song-album-image" :src="song.albumImageURL">
           </v-flex>
